@@ -3,7 +3,10 @@ This app help you  keep track of the books you read and rate them.
 
 ## Requirements
 React.js - 18.1.0
+
 jest - 5.16.4
+
+tailwind - 3.1.2
 
 ## To launch project
 Install dependencies
@@ -16,6 +19,6 @@ Start the project
         yarn start
 
 
-start the test
+Start the test
 
         yarn test
