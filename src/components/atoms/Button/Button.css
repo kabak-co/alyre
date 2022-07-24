@@ -1,8 +1,8 @@
 .default {
-    background-color: brown;
-    color: beige;
+    background-color: #a52a2a;
+    color: #f5f5dc;
 }
 .primary {
-    background-color: blue;
-    color: beige;
+    background-color: #0000ff;
+    color: #f5f5dc;
 }
