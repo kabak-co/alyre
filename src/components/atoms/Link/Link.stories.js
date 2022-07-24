@@ -12,6 +12,6 @@ const Template = ({ children, ...args }) => (
 export const Default = Template.bind({});
 Default.args = {
   children: "Click me",
-  link: "https://www.journaldequebec.com",
+  href: "https://www.journaldequebec.com",
   type: "default",
 };

@@ -1,5 +1,5 @@
-const Link = ({ link, children }, props) => {
-    return <a href={link}>{children}</a>;
+const Link = ({ href, children }, props) => {
+    return <a href={href} {...props}>{children}</a>;
   };
   
   export { Link };
