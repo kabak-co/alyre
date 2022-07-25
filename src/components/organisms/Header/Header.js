@@ -6,12 +6,12 @@ const Header = ({ children }, props) => {
     <header className="flex justify-between items-center" {...props}>
       <h1>Alyre</h1>
       <Navigation>
-        <Link href={props.link}>Accueil</Link>
-        <Link href="apple.com">Profil</Link>
-        <Link href="apple.com">livres</Link>
-        <Link href="apple.com">auteurs</Link>
-        <Link href="apple.com">mon compte</Link>
-        <Link href="apple.com">s'inscrire / se connecter</Link>
+        <Link href="../pages/Home/Home">Accueil</Link>
+        <Link href="../pages/Profil/Profil">Profil</Link>
+        <Link href="../pages/Livres/Livres">livres</Link>
+        <Link href="../pages/Auteurs/Auteurs">auteurs</Link>
+        <Link href="../pages/Compte/Compte">mon compte</Link>
+        <Link href="../pages/Connexion/Connexion">s'inscrire / se connecter</Link>
       </Navigation>
     </header>
   );
