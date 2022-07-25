@@ -10,7 +10,8 @@ const Home = props => {
 };
 
 Home.propTypes = {
-  
+  book: Array,
+  news: Object,
 };
 
 export default Home;

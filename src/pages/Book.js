@@ -10,8 +10,8 @@ const Book = props => {
 };
 
 Book.propTypes = {
-  title: string,
   author: string,
+  title: string,
 };
 
 export default Book;

@@ -1,7 +1,7 @@
 import { string } from 'prop-types';
 import React, { PropTypes } from 'react';
 
-const Profile = props => {
+const Author = props => {
   return (
     <div>
       
@@ -9,9 +9,9 @@ const Profile = props => {
   );
 };
 
-Profile.propTypes = {
-  profileImage: string,
-  username: string,
+Author.propTypes = {
+  books: Array,
+  fullName: string,
 };
 
-export default Profile;
+export default Author;
