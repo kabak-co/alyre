@@ -1,5 +1,5 @@
 import { Button } from "./Button";
-import "./Button.css";
+import "./Button.module.css";
 
 export default {
   title: "Atoms/Button",
