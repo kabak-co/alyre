@@ -22,3 +22,10 @@ Start the project
 Start the test
 
         yarn test
+
+## To launch Storybook
+Run storybook project
+
+        npm run storybook
+
+
