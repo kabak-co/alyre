@@ -4,6 +4,10 @@ import './App.css';
 function App() {
   return (
     <div className="App">
+        {/* TODO : ICI SERA LE LAYOUT */}
+        {/* LAYOUT : HEADER / NAV
+          ENSUITE CONTENU
+        */}
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
