@@ -1,4 +1,4 @@
-import "./Button.css";
+import "./Button.module.css";
 
 const Button = ({ clickHandle, children, type }, props) => {
   return (
