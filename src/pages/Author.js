@@ -4,14 +4,14 @@ import React, { PropTypes } from 'react';
 const Author = props => {
   return (
     <div>
-      
+      Authors
     </div>
   );
 };
 
 Author.propTypes = {
-  books: Array,
-  fullName: string,
+  // books: Array,
+  // fullName: string,
 };
 
 export default Author;
