@@ -1,9 +1,10 @@
+import logo from "../../../assets/alyre.png";
 
 const Header = ({ children }, props) => {
 
   return (
     <header className="flex justify-between items-center" {...props}>
-      <h1>Alyre</h1>
+      <img src={logo} alt="Logo Alyre" style={{maxWidth: "150px", width: "60px"}} />
       {children}
     </header>
   );
