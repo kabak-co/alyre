@@ -1,4 +1,5 @@
-import Layout from './components/organisms/Layout';
+import Layout from './components/organisms/Layout/Layout';
+import './App.css';
 
 function App() {
   return (

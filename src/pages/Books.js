@@ -9,7 +9,7 @@ const Books = props => {
 };
 
 Books.propTypes = {
-  book: Array
+  // book: Array
 };
 
 export default Books;
