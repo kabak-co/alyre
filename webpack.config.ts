@@ -6,10 +6,8 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'), // Output directory
     filename: 'bundle.js', // Output filename
   },
-module: {
+  module: {
     rules: [
-      // ... other rules ...
-  
       // Rule for images
       {
         test: /\.(png|jpe?g|gif|svg)$/i,
