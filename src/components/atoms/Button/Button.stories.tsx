@@ -1,4 +1,5 @@
-import { Button } from "./Button";
+import { Story } from "@storybook/react";
+import { Button, buttonInterface } from "./Button";
 import "./Button.module.css";
 
 export default {
@@ -6,17 +7,17 @@ export default {
   component: Button,
 };
 
-const Template = ({ children, ...args }) => (
+const Template = ({ children, ...args }: buttonInterface) => (
   <Button {...args}>{children}</Button>
 );
 
-export const Default = Template.bind({});
+export const Default: Story = Template.bind({});
 Default.args = {
   children: "Click me",
   type: "default",
 };
 
-export const Primary = Template.bind({});
+export const Primary: Story = Template.bind({});
 Primary.args = {
   children: "Click me",
   type: "primary",
