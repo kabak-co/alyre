@@ -1,5 +1,6 @@
 import AlyreScore from "components/molecules/AlyreScore/AlyreScore";
 import ScoreForm from "components/molecules/ScoreForm/ScoreForm";
+import BookReviews from "components/organisms/BookReviews/BookReviews";
 import { GlobalChildren } from "components/templates/GlobalChildren.interface";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -48,7 +49,7 @@ const Book = () => {
   //   summary: "Un moldu devient un sorcier"
   // };
 
-  return book ? (
+  return book && !isLoading ? (
     <div>
       <div className="flex w-full m-5">
         <img className="w-5/12 rounded-md" src={book.imageUrl} alt={book.title} />
@@ -65,6 +66,7 @@ const Book = () => {
         </div>
       </div>
       <p>{book.summary}</p>
+      <BookReviews />
     </div>
   ) : (
     <p>no book fetched</p>
