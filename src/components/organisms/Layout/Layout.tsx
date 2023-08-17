@@ -7,10 +7,10 @@ import {
 
 import { Header } from "../Header/Header";
 import { Navigation } from "../../molecules/Navigation/Navigation";
-import { Profile, Author, Books, Home, Settings } from "../../../pages";
+import { Profile, Author, Books, Home, Settings, Book } from "../../../pages";
 import { GlobalChildren } from "components/templates/GlobalChildren.interface";
 
-interface layoutInterface extends GlobalChildren {};
+interface layoutInterface extends GlobalChildren { };
 const Layout = (props: layoutInterface) => {
   let isLoggedIn = false;
 
@@ -51,9 +51,10 @@ const Layout = (props: layoutInterface) => {
         <Routes>
           <Route path="/" element={<Home />} /> {/*<Route exact path="/" element={<Home />} />  exact est depreciated depuis v.6 de router*/}
           <Route path="/author" element={<Author />} />
-          <Route path="/profile" element={<Profile profileImage="this is an image" username="Anto"/>} />
+          <Route path="/profile" element={<Profile profileImage="this is an image" username="Anto" />} />
           <Route path="/books" element={<Books />} />
-          <Route path="/settings" element={<Settings settingsImage="this is an image" username="Anto"/>} />
+          <Route path="/book/:bookId" element={<Book />} />
+          <Route path="/settings" element={<Settings settingsImage="this is an image" username="Anto" />} />
         </Routes>
       </div>
     </BrowserRouter>
