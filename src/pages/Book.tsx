@@ -1,4 +1,5 @@
 import AlyreScore from "components/molecules/AlyreScore/AlyreScore";
+import BookCover from "components/molecules/BookCover/BookCover";
 import ScoreForm from "components/molecules/ScoreForm/ScoreForm";
 import BookReviews from "components/organisms/BookReviews/BookReviews";
 import { GlobalChildren } from "components/templates/GlobalChildren.interface";
@@ -50,12 +51,12 @@ const Book = () => {
   // };
 
   return book && !isLoading ? (
-    <div>
+    <div className="w-full">
       <div className="flex w-full m-5">
-        <img className="w-5/12 rounded-md" src={book.imageUrl} alt={book.title} />
+        {/* <img className="w-5/12 rounded-md" src={book.imageUrl} alt={book.title} /> */}
+        <BookCover imageUrl={book.imageUrl} imageWidth="w-full" />
         <div className="flex flex-col items-center w-full">
-          <ScoreForm />
-          <h1 className="text-3xl">{book.title}</h1>
+          <h1 className="text-4xl">{book.title}</h1>
           <h2 className="mt-2"> by {book.author}</h2>
           <p className="mt-2">Editor: {book.editor}</p>
           <p className="mt-2">isbn : {book.isbn} </p>
