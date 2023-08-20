@@ -86,11 +86,14 @@ const Book = () => {
         </div>
       </div>
       <p>{book.summary}</p>
-      <div className="flex">
+      <div>
         <h3>Alyre thinks you will like those books too:</h3>
-        {recommendedBooks.map((book, index) => (
-          <BookCover recommended key={index} imageUrl={book.imageUrl} imageWidth="full" />
-        ))}
+        <div className="flex">
+          {recommendedBooks.map((book, index) => (
+            <BookCover recommended key={index} imageUrl={book.imageUrl} imageWidth="full" />
+          ))}
+        </div>
+
       </div>
       <BookReviews />
     </div>
