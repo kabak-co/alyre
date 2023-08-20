@@ -1,7 +1,5 @@
 import AlyreScore from "components/molecules/AlyreScore/AlyreScore";
 import BookCover from "components/molecules/BookCover/BookCover";
-import ScoreForm from "components/molecules/ScoreForm/ScoreForm";
-import BookRecommend from "components/organisms/BookRecommend/BookRecommend";
 import BookReviews from "components/organisms/BookReviews/BookReviews";
 import { GlobalChildren } from "components/templates/GlobalChildren.interface";
 import { useEffect, useState } from "react";
