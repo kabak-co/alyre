@@ -1,6 +1,7 @@
 import AlyreScore from "components/molecules/AlyreScore/AlyreScore";
 import BookCover from "components/molecules/BookCover/BookCover";
 import ScoreForm from "components/molecules/ScoreForm/ScoreForm";
+import BookRecommend from "components/organisms/BookRecommend/BookRecommend";
 import BookReviews from "components/organisms/BookReviews/BookReviews";
 import { GlobalChildren } from "components/templates/GlobalChildren.interface";
 import { useEffect, useState } from "react";
@@ -38,6 +39,24 @@ const Book = () => {
     fetchBookHandler();
   }, []);
 
+  const recommendedBooks = [
+    {
+      imageUrl: "https://m.media-amazon.com/images/I/51ffB22hWxL.jpg"
+    },
+    {
+      imageUrl: 'https://images.squarespace-cdn.com/content/v1/5c71c7d8aadd342945360ba1/1586723509001-E5NQB7VLS1R9NS0EOSOM/Harry+Potter+and+the+Philosopher%27s+Stone+Original+Children%27s+Edition+Cover.jpg'
+    },
+    {
+      imageUrl: 'https://m.media-amazon.com/images/I/91Be3OR3f8L._AC_UF1000,1000_QL80_.jpg'
+    },
+    {
+      imageUrl: 'https://m.media-amazon.com/images/I/51YHiA0Z3AL._AC_UF1000,1000_QL80_.jpg'
+    },
+    {
+      imageUrl: 'https://cdn.kobo.com/book-images/7cdf60e0-c47b-498b-842d-eb8c094ef77e/1200/1200/False/dune-2.jpg'
+    }
+  ]
+
   // const book: bookInterface = {
   //   _id: '6abcyey',
   //   title: 'Harry',
@@ -54,7 +73,7 @@ const Book = () => {
     <div className="w-full">
       <div className="flex w-full m-5">
         {/* <img className="w-5/12 rounded-md" src={book.imageUrl} alt={book.title} /> */}
-        <BookCover imageUrl={book.imageUrl} imageWidth="w-full" />
+        <BookCover recommended={false} imageUrl={book.imageUrl} imageWidth="w-full" />
         <div className="flex flex-col items-center w-full">
           <h1 className="text-4xl">{book.title}</h1>
           <h2 className="mt-2"> by {book.author}</h2>
@@ -67,6 +86,12 @@ const Book = () => {
         </div>
       </div>
       <p>{book.summary}</p>
+      <div className="flex">
+        <h3>Alyre thinks you will like those books too:</h3>
+        {recommendedBooks.map((book, index) => (
+          <BookCover recommended key={index} imageUrl={book.imageUrl} imageWidth="full" />
+        ))}
+      </div>
       <BookReviews />
     </div>
   ) : (
