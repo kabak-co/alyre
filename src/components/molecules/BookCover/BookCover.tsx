@@ -10,10 +10,11 @@ import { useState } from "react";
 interface BookCoverInterface extends GlobalChildren {
     imageUrl: string;
     imageWidth: string;
+    imageHeigth: string;
     recommended: boolean;
 }
 
-const BookCover = ({ imageUrl, imageWidth, recommended }: BookCoverInterface) => {
+const BookCover = ({ imageUrl, imageHeigth, imageWidth, recommended }: BookCoverInterface) => {
     const elementImg = { book: { closed: bookClose, open: bookOpen } }
     const [bookImg, setBookImg] = useState(bookClose);
     const [heartImg, setHeartImg] = useState(notLikedHeart);
@@ -51,7 +52,7 @@ const BookCover = ({ imageUrl, imageWidth, recommended }: BookCoverInterface) =>
     };
 
     return (
-        <div className="relative rounded-lg" style={{ height: recommended ? '300px' : '600px', backgroundImage: `url(${imageUrl})`, backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: 'no-repeat', width: '50%' }}>
+        <div className="relative rounded-lg" style={{ height: imageHeigth, flexBasis: recommended ? '17%' : 'auto', backgroundImage: `url(${imageUrl})`, backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: 'no-repeat', width: '50%' }}>
             <div className="flex justify-around absolute rounded-lg inset-x-0 bottom-0 bg-slate-600 opacity-80 h-32">
                 <button id="book" className="closed flex flex-col items-center justify-center" onClick={() => toggleButton('book')}>
                     <img src={bookImg} alt="closed book" />
