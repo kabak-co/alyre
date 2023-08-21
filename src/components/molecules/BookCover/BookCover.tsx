@@ -4,8 +4,9 @@ import bookOpen from '../../../assets/open-book.png';
 import likedHeart from '../../../assets/heart_blue.png';
 import notLikedHeart from '../../../assets/heart.png';
 import addedToList from '../../../assets/add-library.png';
-import list from '../../../assets/library.png'
+import notInList from '../../../assets/library.png'
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 interface BookCoverInterface extends GlobalChildren {
     // key: any;
@@ -13,16 +14,17 @@ interface BookCoverInterface extends GlobalChildren {
     imageUrl: string;
     imageWidth: string;
     imageHeigth: string;
-    recommended: boolean;
+    list: boolean;
 }
 
-const BookCover = ({ id, imageUrl, imageHeigth, imageWidth, recommended }: BookCoverInterface) => {
+const BookCover = ({ id, imageUrl, imageHeigth, imageWidth, list }: BookCoverInterface) => {
     const elementImg = { book: { closed: bookClose, open: bookOpen } }
     const [bookImg, setBookImg] = useState(bookClose);
     const [heartImg, setHeartImg] = useState(notLikedHeart);
-    const [readListImg, setReadListImg] = useState(list);
+    const [readListImg, setReadListImg] = useState(notInList);
 
     const toggleButton = (event: any) => {
+        event.preventDefault();
         const element = event.currentTarget;
 
         const elementClassList = element!.classList;
@@ -51,27 +53,33 @@ const BookCover = ({ id, imageUrl, imageHeigth, imageWidth, recommended }: BookC
                 setHeartImg(notLikedHeart);
             }
             if (element!.id.includes('readList')) {
-                setReadListImg(list);
+                setReadListImg(notInList);
             }
         }
     };
 
-    return (
-        <div className="relative rounded-lg" style={{ height: imageHeigth, flexBasis: recommended ? '17%' : 'auto', backgroundImage: `url(${imageUrl})`, backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: 'no-repeat', width: '50%' }}>
-            <div className="flex justify-around absolute rounded-lg inset-x-0 bottom-0 bg-slate-600 opacity-80 h-32">
-                <button id={`book-${id}`} className="closed flex flex-col items-center justify-center" onClick={toggleButton.bind(this)}>
-                    <img src={bookImg} alt="closed book" />
-                    <p>read</p>
-                </button>
-                <button id={"heart-" + id} className="closed flex flex-col items-center justify-center" onClick={toggleButton.bind(this)}>
-                    <img src={heartImg} alt="closed heart" />
-                    <p>like</p>
-                </button>
-                <button id={"readList-" + id} className="closed flex flex-col items-center justify-center" onClick={toggleButton.bind(this)}>
-                    <img src={readListImg} alt="closed read list" />
-                    <p>read list</p>
-                </button>
-            </div>
+    const componentContent = (<div className="flex justify-around absolute rounded-lg inset-x-0 bottom-0 bg-slate-600 opacity-80 h-32">
+        <button id={`book-${id}`} className="closed flex flex-col items-center justify-center" onClick={toggleButton.bind(this)}>
+            <img src={bookImg} alt="closed book" />
+            <p>read</p>
+        </button>
+        <button id={"heart-" + id} className="closed flex flex-col items-center justify-center" onClick={toggleButton.bind(this)}>
+            <img src={heartImg} alt="closed heart" />
+            <p>like</p>
+        </button>
+        <button id={"readList-" + id} className="closed flex flex-col items-center justify-center" onClick={toggleButton.bind(this)}>
+            <img src={readListImg} alt="closed read list" />
+            <p>read list</p>
+        </button>
+    </div>);
+
+    return list ? (
+        <Link to={`/book/${id}`} className="relative rounded-lg" style={{ height: imageHeigth, flexBasis: list ? '17%' : 'auto', backgroundImage: `url(${imageUrl})`, backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: 'no-repeat', width: '50%' }}>
+            {componentContent}
+        </Link>
+    ) : (
+        <div className="relative rounded-lg" style={{ height: imageHeigth, flexBasis: list ? '17%' : 'auto', backgroundImage: `url(${imageUrl})`, backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: 'no-repeat', width: '50%' }}>
+            {componentContent}
         </div>
     );
 }

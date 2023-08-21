@@ -51,7 +51,7 @@ const Books = (props: booksInterface) => {
       <div className="flex grow justify-stretch gap-4 my-0 mx-auto flex-wrap">
         {booksArray.map((book, index) => (
           // <Link key={index} to={`/book/${id}`}>
-          <BookCover key={index} recommended id={book.id} imageUrl={book.imageUrl} imageWidth="full" imageHeigth="400px" />
+          <BookCover key={index} list id={book.id} imageUrl={book.imageUrl} imageWidth="full" imageHeigth="400px" />
           /* </Link> */
         ))}
       </div>
