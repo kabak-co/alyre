@@ -1,3 +1,4 @@
+import ProfileReviews from "components/organisms/ProfileReviews/ProfileReviews";
 import { GlobalChildren } from "components/templates/GlobalChildren.interface";
 import { Link } from "react-router-dom";
 
@@ -55,7 +56,7 @@ const Profile = (props: profileTypes) => {
         </div>
       </div>
       <div className="my-6">
-        <h2 className="text-3xl m-4">Your most recent books review</h2>
+        <h2 className="text-3xl m-4">Your most recent books read</h2>
         <div className="flex justify-around">
           <Link className="w-1/6" to={`/book/64e49e71dcb8f19bc619fb67`}>
             <img className="rounded-md" src="https://images.squarespace-cdn.com/content/v1/5c71c7d8aadd342945360ba1/1586723509001-E5NQB7VLS1R9NS0EOSOM/Harry+Potter+and+the+Philosopher%27s+Stone+Original+Children%27s+Edition+Cover.jpg" alt="harry potter" />
@@ -73,6 +74,19 @@ const Profile = (props: profileTypes) => {
             <img className="rounded-md" src="https://images.squarespace-cdn.com/content/v1/5c71c7d8aadd342945360ba1/1586723509001-E5NQB7VLS1R9NS0EOSOM/Harry+Potter+and+the+Philosopher%27s+Stone+Original+Children%27s+Edition+Cover.jpg" alt="harry potter" />
           </Link>
         </div>
+      </div>
+      <div>
+        <h2 className="text-3xl m-12">Your lasts Alyre reviews</h2>
+        <ProfileReviews />
+        <ProfileReviews />
+        <ProfileReviews />
+      </div>
+      <div>
+        <h2 className="text-3xl m-12">Your most liked reviews</h2>
+        <ProfileReviews />
+        <ProfileReviews />
+        <ProfileReviews />
+        <ProfileReviews />
       </div>
     </div>
   );
