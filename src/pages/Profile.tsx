@@ -9,6 +9,46 @@ interface profileTypes extends GlobalChildren {
 
 
 const Profile = (props: profileTypes) => {
+  const lastReviews = [
+    {
+      imageUrl: "https://images.squarespace-cdn.com/content/v1/5c71c7d8aadd342945360ba1/1586723509001-E5NQB7VLS1R9NS0EOSOM/Harry+Potter+and+the+Philosopher%27s+Stone+Original+Children%27s+Edition+Cover.jpg",
+      title: "Harry Potter and the Philosophers Stone",
+      reviewContent: "This Book is wunderful. But it makes me kind of sad too beacause I wonder where is my Hogwarts letter or the one from the magical school closer from my place",
+      nbLike: 5
+    },
+    {
+      imageUrl: "https://images.squarespace-cdn.com/content/v1/5c71c7d8aadd342945360ba1/1586723509001-E5NQB7VLS1R9NS0EOSOM/Harry+Potter+and+the+Philosopher%27s+Stone+Original+Children%27s+Edition+Cover.jpg",
+      title: "Harry Potter and the Philosophers Stone",
+      reviewContent: "This Book is wunderful. But it makes me kind of sad too beacause I wonder where is my Hogwarts letter or the one from the magical school closer from my place",
+      nbLike: 15
+    },
+    {
+      imageUrl: "https://images.squarespace-cdn.com/content/v1/5c71c7d8aadd342945360ba1/1586723509001-E5NQB7VLS1R9NS0EOSOM/Harry+Potter+and+the+Philosopher%27s+Stone+Original+Children%27s+Edition+Cover.jpg",
+      title: "Harry Potter and the Philosophers Stone",
+      reviewContent: "This Book is wunderful. But it makes me kind of sad too beacause I wonder where is my Hogwarts letter or the one from the magical school closer from my place",
+      nbLike: 5
+    }
+  ];
+  const mostLikedReviews = [
+    {
+      imageUrl: "https://images.squarespace-cdn.com/content/v1/5c71c7d8aadd342945360ba1/1586723509001-E5NQB7VLS1R9NS0EOSOM/Harry+Potter+and+the+Philosopher%27s+Stone+Original+Children%27s+Edition+Cover.jpg",
+      title: "Harry Potter and the Philosophers Stone",
+      reviewContent: "This Book is wunderful. But it makes me kind of sad too beacause I wonder where is my Hogwarts letter or the one from the magical school closer from my place",
+      nbLike: 135
+    },
+    {
+      imageUrl: "https://images.squarespace-cdn.com/content/v1/5c71c7d8aadd342945360ba1/1586723509001-E5NQB7VLS1R9NS0EOSOM/Harry+Potter+and+the+Philosopher%27s+Stone+Original+Children%27s+Edition+Cover.jpg",
+      title: "Harry Potter and the Philosophers Stone",
+      reviewContent: "This Book is wunderful. But it makes me kind of sad too beacause I wonder where is my Hogwarts letter or the one from the magical school closer from my place",
+      nbLike: 65
+    },
+    {
+      imageUrl: "https://images.squarespace-cdn.com/content/v1/5c71c7d8aadd342945360ba1/1586723509001-E5NQB7VLS1R9NS0EOSOM/Harry+Potter+and+the+Philosopher%27s+Stone+Original+Children%27s+Edition+Cover.jpg",
+      title: "Harry Potter and the Philosophers Stone",
+      reviewContent: "This Book is wunderful. But it makes me kind of sad too beacause I wonder where is my Hogwarts letter or the one from the magical school closer from my place",
+      nbLike: 56
+    }
+  ];
   return (
     <div>
       <h1 className="text-4xl m-5">Antoine Cadoret</h1>
@@ -77,16 +117,15 @@ const Profile = (props: profileTypes) => {
       </div>
       <div>
         <h2 className="text-3xl m-12">Your lasts Alyre reviews</h2>
-        <ProfileReviews />
-        <ProfileReviews />
-        <ProfileReviews />
+        {lastReviews.map((review, index) => (
+          <ProfileReviews key={index} imageUrl={review.imageUrl} title={review.title} content={review.reviewContent} nbLike={review.nbLike} />
+        ))}
       </div>
       <div>
         <h2 className="text-3xl m-12">Your most liked reviews</h2>
-        <ProfileReviews />
-        <ProfileReviews />
-        <ProfileReviews />
-        <ProfileReviews />
+        {mostLikedReviews.map((review, index) => (
+          <ProfileReviews key={index} imageUrl={review.imageUrl} title={review.title} content={review.reviewContent} nbLike={review.nbLike} />
+        ))}
       </div>
     </div>
   );
