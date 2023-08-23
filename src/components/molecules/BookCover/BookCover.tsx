@@ -9,15 +9,14 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 interface BookCoverInterface extends GlobalChildren {
-    // key: any;
     id: string;
     imageUrl: string;
     imageWidth: string;
-    imageHeigth: string;
+    imageHeight: string;
     list: boolean;
 }
 
-const BookCover = ({ id, imageUrl, imageHeigth, imageWidth, list }: BookCoverInterface) => {
+const BookCover = ({ id, imageUrl, imageHeight, imageWidth, list }: BookCoverInterface) => {
     const elementImg = { book: { closed: bookClose, open: bookOpen } }
     const [bookImg, setBookImg] = useState(bookClose);
     const [heartImg, setHeartImg] = useState(notLikedHeart);
@@ -74,11 +73,11 @@ const BookCover = ({ id, imageUrl, imageHeigth, imageWidth, list }: BookCoverInt
     </div>);
 
     return list ? (
-        <Link to={`/book/${id}`} className="relative rounded-lg" style={{ height: imageHeigth, flexBasis: list ? '17%' : 'auto', backgroundImage: `url(${imageUrl})`, backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: 'no-repeat', width: '50%' }}>
+        <Link to={`/book/${id}`} className="relative rounded-lg" style={{ height: imageHeight, flexBasis: list ? '17%' : 'auto', backgroundImage: `url(${imageUrl})`, backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: 'no-repeat', width: '50%' }}>
             {componentContent}
         </Link>
     ) : (
-        <div className="relative rounded-lg" style={{ height: imageHeigth, flexBasis: list ? '17%' : 'auto', backgroundImage: `url(${imageUrl})`, backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: 'no-repeat', width: '50%' }}>
+        <div className="relative rounded-lg" style={{ height: imageHeight, flexBasis: list ? '17%' : 'auto', backgroundImage: `url(${imageUrl})`, backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: 'no-repeat', width: '50%' }}>
             {componentContent}
         </div>
     );

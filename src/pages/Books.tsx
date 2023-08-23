@@ -30,7 +30,6 @@ const Books = () => {
       } catch (error) {
         console.log(error);
       }
-
     };
     fetchBookHandler();
   }, []);
@@ -39,9 +38,7 @@ const Books = () => {
       <h1>Bibliothèque de livres</h1>
       <div className="flex grow justify-stretch gap-4 my-0 mx-auto flex-wrap">
         {books.map((book, index) => (
-          // <Link key={index} to={`/book/${id}`}>
-          <BookCover key={index} list id={book._id} imageUrl={book.imageUrl} imageWidth="full" imageHeigth="400px" />
-          /* </Link> */
+          <BookCover key={index} list id={book._id} imageUrl={book.imageUrl} imageWidth="full" imageHeight="400px" />
         ))}
       </div>
 
