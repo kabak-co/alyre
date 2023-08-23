@@ -71,7 +71,7 @@ const Book = () => {
     <div className="w-full">
       <div className="flex w-full m-5">
         {/* <img className="w-5/12 rounded-md" src={book.imageUrl} alt={book.title} /> */}
-        <BookCover recommended={false} imageUrl={book.imageUrl} imageWidth="w-full" />
+        <BookCover list={false} id={book._id} imageUrl={book.imageUrl} imageWidth="w-full" imageHeight="600px" />
         <div className="flex flex-col items-center w-full">
           <h1 className="text-4xl">{book.title}</h1>
           <h2 className="mt-2"> by {book.author}</h2>
@@ -88,7 +88,7 @@ const Book = () => {
         <h3>Alyre thinks you will like those books too:</h3>
         <div className="flex">
           {recommendedBooks.map((book, index) => (
-            <BookCover recommended key={index} imageUrl={book.imageUrl} imageWidth="full" />
+            <BookCover list key={index} id={index.toString()} imageUrl={book.imageUrl} imageWidth="full" imageHeight="300px" />
           ))}
         </div>
 
