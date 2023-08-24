@@ -7,7 +7,7 @@ import {
 
 import { Header } from "../Header/Header";
 import { Navigation } from "../../molecules/Navigation/Navigation";
-import { Profile, Author, Books, Home, Settings, Book } from "../../../pages";
+import { Profile, Author, Books, Home, Settings, Book, SignIn, SignUp } from "../../../pages";
 import { GlobalChildren } from "components/templates/GlobalChildren.interface";
 
 interface layoutInterface extends GlobalChildren { };
@@ -34,10 +34,10 @@ const Layout = (props: layoutInterface) => {
             <RouterLink to="/settings">Mon compte</RouterLink>
           </li>
           <li>
-            <RouterLink to="/">{
+            <RouterLink to="/signIn">{
               isLoggedIn
-                ? "S'inscrire"
-                : "Se connecter"
+                ? "Se déconnecter"
+                : "Se connecter / S'inscrire"
             }</RouterLink>
           </li>
           {/* <Routes> looks through all its <Route> elements & 
@@ -55,6 +55,8 @@ const Layout = (props: layoutInterface) => {
           <Route path="/books" element={<Books />} />
           <Route path="/book/:bookId" element={<Book />} />
           <Route path="/settings" element={<Settings settingsImage="this is an image" username="Anto" />} />
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/signup" element={<SignUp />} />
         </Routes>
       </div>
     </BrowserRouter>
