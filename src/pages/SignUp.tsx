@@ -10,17 +10,21 @@ const SignUp = () => {
         const passwordElement = document.getElementById('password') as HTMLInputElement;
         const confirmPasswordElement = document.getElementById('confirmPassword') as HTMLInputElement;
 
-        const formData = new FormData();
-        formData.append('username', usernameElement.value);
-        formData.append('email', emailElement.value);
-        formData.append('password', passwordElement.value);
-        formData.append('confirmPassword', confirmPasswordElement.value);
+        const data = {
+            username: usernameElement.value,
+            email: emailElement.value,
+            password: passwordElement.value,
+            confirmPassword: confirmPasswordElement.value
+        };
 
 
         try {
-            const response = await fetch(`http://localhost:8080/signup`, {
-                method: 'PUSH',
-                body: formData
+            const response = await fetch('http://localhost:8080/auth/signup', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
             });
             console.log(response);
         } catch (err) {
