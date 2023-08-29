@@ -1,14 +1,17 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const SignUp = () => {
     const [isError, setIsError] = useState(false);
+    const [errorArray, setErrorArray] = useState<Array<string>>([]);
 
     const saveAccount = async () => {
         const usernameElement = document.getElementById('username') as HTMLInputElement;
         const emailElement = document.getElementById('email') as HTMLInputElement;
         const passwordElement = document.getElementById('password') as HTMLInputElement;
         const confirmPasswordElement = document.getElementById('confirmPassword') as HTMLInputElement;
+
+        let errorMessages: Array<string> = [];
 
         const data = {
             username: usernameElement.value,
@@ -17,23 +20,48 @@ const SignUp = () => {
             confirmPassword: confirmPasswordElement.value
         };
 
+        if (!data.username) {
+            errorMessages.push('You have to enter a username');
+        }
+        if (!data.email) {
+            errorMessages.push('You have to enter an email');
+        }
+        if (!data.password) {
+            errorMessages.push('You have to enter a password');
+        }
+        if (!data.confirmPassword) {
+            errorMessages.push('You have to enter your password a second time');
+        }
 
-        try {
-            const response = await fetch('http://localhost:8080/auth/signup', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            });
-            console.log(response);
-        } catch (err) {
-            console.log(err);
+        if (errorMessages.length === 0) {
+            try {
+                const response = await fetch('http://localhost:8080/auth/signup', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+            } catch (err) {
+                console.log(err);
+            }
+        } else {
+            setIsError(true);
+            setErrorArray(errorMessages);
         }
     };
 
     return (
         <div>
+            {isError &&
+                <div>
+                    <h2>There is some errors</h2>
+                    <ul>
+                        {errorArray.map((error, index) => (
+                            <li key={index}>{error}</li>
+                        ))}
+                    </ul>
+                </div>}
             <h1 className="m-6 text-4xl">Sign up</h1>
             <p className="m-6">You already have an account? <Link className="underline text-cyan-600" to={'/signin'}>Sign In</Link></p>
             <div className="flex flex-col">
