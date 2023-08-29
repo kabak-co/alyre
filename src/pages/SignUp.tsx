@@ -21,15 +21,19 @@ const SignUp = () => {
         };
 
         if (!data.username) {
+            usernameElement.style.border = '0.3rem solid red';
             errorMessages.push('You have to enter a username');
         }
         if (!data.email) {
+            emailElement.style.border = '0.3rem solid red';
             errorMessages.push('You have to enter an email');
         }
         if (!data.password) {
+            passwordElement.style.border = '0.3rem solid red';
             errorMessages.push('You have to enter a password');
         }
         if (!data.confirmPassword) {
+            confirmPasswordElement.style.border = '0.3rem solid red';
             errorMessages.push('You have to enter your password a second time');
         }
 
@@ -54,7 +58,7 @@ const SignUp = () => {
     return (
         <div>
             {isError &&
-                <div>
+                <div className="bg-red-700/30 border-2 border-red-600 rounded-md p-4 m-4">
                     <h2>There is some errors</h2>
                     <ul>
                         {errorArray.map((error, index) => (
