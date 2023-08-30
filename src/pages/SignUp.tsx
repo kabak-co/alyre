@@ -5,6 +5,10 @@ const SignUp = () => {
     const [isError, setIsError] = useState(false);
     const [errorArray, setErrorArray] = useState<Array<string>>([]);
 
+    const verifyData = (value: string, regex: RegExp): boolean => {
+        return regex.test(value);
+    };
+
     const saveAccount = async () => {
         const usernameElement = document.getElementById('username') as HTMLInputElement;
         const emailElement = document.getElementById('email') as HTMLInputElement;
@@ -23,18 +27,43 @@ const SignUp = () => {
         if (!data.username) {
             usernameElement.style.border = '0.3rem solid red';
             errorMessages.push('You have to enter a username');
+        } else {
+            if (!verifyData(data.username, /^[a-zA-Z][a-zA-Z0-9_]{2,19}$/)) {
+                usernameElement.style.border = '0.3rem solid red';
+                errorMessages.push('The username is invalid');
+            }
         }
         if (!data.email) {
             emailElement.style.border = '0.3rem solid red';
             errorMessages.push('You have to enter an email');
+        } else {
+            if (!verifyData(data.email, /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/)) {
+                emailElement.style.border = '0.3rem solid red';
+                errorMessages.push('The email is invalid');
+            }
         }
         if (!data.password) {
             passwordElement.style.border = '0.3rem solid red';
             errorMessages.push('You have to enter a password');
+        } else {
+            if (!verifyData(data.password, /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$/)) {
+                passwordElement.style.border = '0.3rem solid red';
+                errorMessages.push('The password is invalid');
+            }
         }
         if (!data.confirmPassword) {
             confirmPasswordElement.style.border = '0.3rem solid red';
             errorMessages.push('You have to enter your password a second time');
+        } else {
+            if (!verifyData(data.confirmPassword, /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$/)) {
+                confirmPasswordElement.style.border = '0.3rem solid red';
+                errorMessages.push('The password confirmation is invalid');
+            } else {
+                if (data.confirmPassword === data.password) {
+                    confirmPasswordElement.style.border = '0.3rem solid red';
+                    errorMessages.push('The password confirmation is not equal to the password');
+                }
+            }
         }
 
         if (errorMessages.length === 0) {
