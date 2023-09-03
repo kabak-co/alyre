@@ -1,6 +1,7 @@
-import { link } from "fs";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+
+import ErrorMessage from "../components/atoms/ErrorMessage/ErrorMessage";
 
 const SignIn = () => {
     const [isError, setIsError] = useState<boolean>(false);
@@ -28,6 +29,8 @@ const SignIn = () => {
             if (!verifyData(data.email, /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/)) {
                 emailElement.style.border = '0.3rem solid red';
                 errorMessages.push('The email is invalid');
+            } else {
+                emailElement.style.border = 'none';
             }
         }
         if (!data.password) {
@@ -37,6 +40,8 @@ const SignIn = () => {
             if (!verifyData(data.password, /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$/)) {
                 passwordElement.style.border = '0.3rem solid red';
                 errorMessages.push('The password is invalid');
+            } else {
+                passwordElement.style.border = 'none';
             }
         }
         if (errorMessages.length === 0) {
@@ -48,17 +53,8 @@ const SignIn = () => {
     };
     return (
         <div>
-            {isError &&
-                <div className="bg-red-700/30 border-2 border-red-600 rounded-md p-4 m-4">
-                    <h2>Sorry, it seems like there is a mistake</h2>
-                    <ul>
-                        {errorArray.map((error, index) => (
-                            <li key={index}>{error}</li>
-                        ))}
-                    </ul>
-                </div>
-            }
             <h1 className="m-6 text-4xl">Sign In</h1>
+            {isError && <ErrorMessage errorArray={errorArray} />}
             <p className="m-6">You do not have an Alyre account? <Link className="underline text-cyan-600" to={'/signup'}>Sign Up</Link></p>
             <div className="flex flex-col">
                 <label htmlFor="email">Email:</label>

@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
+import ErrorMessage from "components/atoms/ErrorMessage/ErrorMessage";
+
 const SignUp = () => {
     const [isError, setIsError] = useState(false);
     const [errorArray, setErrorArray] = useState<Array<string>>([]);
@@ -31,6 +33,8 @@ const SignUp = () => {
             if (!verifyData(data.username, /^[a-zA-Z][a-zA-Z0-9_]{2,19}$/)) {
                 usernameElement.style.border = '0.3rem solid red';
                 errorMessages.push('The username is invalid');
+            } else {
+                usernameElement.style.border = 'none';
             }
         }
         if (!data.email) {
@@ -40,6 +44,8 @@ const SignUp = () => {
             if (!verifyData(data.email, /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/)) {
                 emailElement.style.border = '0.3rem solid red';
                 errorMessages.push('The email is invalid');
+            } else {
+                emailElement.style.border = 'none';
             }
         }
         if (!data.password) {
@@ -49,6 +55,8 @@ const SignUp = () => {
             if (!verifyData(data.password, /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$/)) {
                 passwordElement.style.border = '0.3rem solid red';
                 errorMessages.push('The password is invalid');
+            } else {
+                passwordElement.style.border = 'none';
             }
         }
         if (!data.confirmPassword) {
@@ -59,9 +67,11 @@ const SignUp = () => {
                 confirmPasswordElement.style.border = '0.3rem solid red';
                 errorMessages.push('The password confirmation is invalid');
             } else {
-                if (data.confirmPassword === data.password) {
+                if (data.confirmPassword !== data.password) {
                     confirmPasswordElement.style.border = '0.3rem solid red';
                     errorMessages.push('The password confirmation is not equal to the password');
+                } else {
+                    confirmPasswordElement.style.border = 'none';
                 }
             }
         }
@@ -86,16 +96,8 @@ const SignUp = () => {
 
     return (
         <div>
-            {isError &&
-                <div className="bg-red-700/30 border-2 border-red-600 rounded-md p-4 m-4">
-                    <h2>There is some errors</h2>
-                    <ul>
-                        {errorArray.map((error, index) => (
-                            <li key={index}>{error}</li>
-                        ))}
-                    </ul>
-                </div>}
             <h1 className="m-6 text-4xl">Sign up</h1>
+            {isError && <ErrorMessage errorArray={errorArray} />}
             <p className="m-6">You already have an account? <Link className="underline text-cyan-600" to={'/signin'}>Sign In</Link></p>
             <div className="flex flex-col">
                 <label htmlFor="username">Username : </label>
