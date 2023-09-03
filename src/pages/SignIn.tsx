@@ -1,15 +1,16 @@
+import { link } from "fs";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const SignIn = () => {
     const [isError, setIsError] = useState<boolean>(false);
-    const [errorMessage, setErrorMessage] = useState<Array<string>>([]);
+    const [errorArray, setErrorArray] = useState<Array<string>>([]);
 
     const verifyData = (value: string, regex: RegExp): boolean => {
         return regex.test(value);
     };
 
-    const logIn = () => {
+    const logIn = async () => {
         const emailElement = document.getElementById('email') as HTMLInputElement;
         const passwordElement = document.getElementById('password') as HTMLInputElement;
 
@@ -30,7 +31,7 @@ const SignIn = () => {
             }
         }
         if (!data.password) {
-            emailElement.style.border = '0.3rem solid red';
+            passwordElement.style.border = '0.3rem solid red';
             errorMessages.push('You have to enter a password');
         } else {
             if (!verifyData(data.password, /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$/)) {
@@ -38,10 +39,25 @@ const SignIn = () => {
                 errorMessages.push('The password is invalid');
             }
         }
+        if (errorMessages.length === 0) {
 
+        } else {
+            setIsError(true);
+            setErrorArray(errorMessages);
+        }
     };
     return (
         <div>
+            {isError &&
+                <div className="bg-red-700/30 border-2 border-red-600 rounded-md p-4 m-4">
+                    <h2>Sorry, it seems like there is a mistake</h2>
+                    <ul>
+                        {errorArray.map((error, index) => (
+                            <li key={index}>{error}</li>
+                        ))}
+                    </ul>
+                </div>
+            }
             <h1 className="m-6 text-4xl">Sign In</h1>
             <p className="m-6">You do not have an Alyre account? <Link className="underline text-cyan-600" to={'/signup'}>Sign Up</Link></p>
             <div className="flex flex-col">
@@ -49,7 +65,7 @@ const SignIn = () => {
                 <input className="my-4 text-slate-500" type="text" name="email" id="email" />
                 <label htmlFor="password">Password:</label>
                 <input className="my-4 text-slate-500" type="text" name="password" id="password" />
-                <button className="my-6 bg-cyan-600 rounded-md">Sign In</button>
+                <button className="my-6 bg-cyan-600 rounded-md" onClick={logIn}>Sign In</button>
             </div>
         </div>
     );
