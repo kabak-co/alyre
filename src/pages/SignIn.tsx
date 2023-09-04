@@ -45,7 +45,15 @@ const SignIn = () => {
             }
         }
         if (errorMessages.length === 0) {
-
+            try {
+                const response = await fetch('http://localhost:8080/auth/signin', {
+                    method: 'GET',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+            } catch (err) {
+                console.log(err);
+            }
         } else {
             setIsError(true);
             setErrorArray(errorMessages);
