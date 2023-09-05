@@ -7,7 +7,7 @@ export interface BooksInterface extends GlobalChildren {
     _id: string;
     imageUrl: string;
     isbn: string;
-    releaseDate: string;
+    releaseDate: Date|string;
     summary: string;
     title: string;
 }; 

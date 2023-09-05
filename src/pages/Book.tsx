@@ -5,10 +5,8 @@ import { BooksInterface } from "components/templates/Book.interface";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-interface bookTypes extends BooksInterface { };
-
 const Book = () => {
-  const [book, setBook] = useState<bookTypes | undefined>(undefined);
+  const [book, setBook] = useState<BooksInterface | undefined>(undefined);
   const [isLoading, setIsloading] = useState(false);
   const params = useParams();
 

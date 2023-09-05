@@ -2,10 +2,8 @@ import BookCover from "components/molecules/BookCover/BookCover";
 import { useEffect, useState } from "react";
 import { BooksInterface } from "components/templates/Book.interface";
 
-interface bookTypes extends BooksInterface { };
-
 const Books = () => {
-  const [books, setBooks] = useState<Array<bookTypes> | undefined>(undefined);
+  const [books, setBooks] = useState<Array<BooksInterface> | undefined>(undefined);
   const [isLoading, setIsloading] = useState(false);
 
   useEffect(() => {
