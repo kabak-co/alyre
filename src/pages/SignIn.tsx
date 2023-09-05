@@ -44,7 +44,7 @@ const SignIn = () => {
                 passwordElement.style.border = 'none';
             }
         }
-        if (errorMessages.length === 0) {
+        if (!errorMessages) {
             try {
                 const response = await fetch('http://localhost:8080/auth/signin', {
                     method: 'GET',
@@ -52,7 +52,7 @@ const SignIn = () => {
                     body: JSON.stringify(data)
                 });
             } catch (err) {
-                console.log(err);
+                console.error(err);
             }
         } else {
             setIsError(true);
