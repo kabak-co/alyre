@@ -1,24 +1,14 @@
 import AlyreScore from "components/molecules/AlyreScore/AlyreScore";
 import BookCover from "components/molecules/BookCover/BookCover";
 import BookReviews from "components/organisms/BookReviews/BookReviews";
-import { GlobalChildren } from "components/templates/GlobalChildren.interface";
+import { BooksInterface } from "components/templates/Book.interface";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-interface bookInterface extends GlobalChildren {
-  author: Array<string>;
-  editor: string;
-  noPage: number;
-  _id: string;
-  imageUrl: string;
-  isbn: string;
-  releaseDate: string;
-  summary: string;
-  title: string;
-}
+interface bookTypes extends BooksInterface { };
 
 const Book = () => {
-  const [book, setBook] = useState<bookInterface | undefined>(undefined);
+  const [book, setBook] = useState<bookTypes | undefined>(undefined);
   const [isLoading, setIsloading] = useState(false);
   const params = useParams();
 

@@ -1,23 +1,11 @@
-import { Link } from "react-router-dom";
-import { GlobalChildren } from "components/templates/GlobalChildren.interface";
-import Book from "./Book";
 import BookCover from "components/molecules/BookCover/BookCover";
 import { useEffect, useState } from "react";
+import { BooksInterface } from "components/templates/Book.interface";
 
-interface bookInterface extends GlobalChildren {
-  author: Array<string>;
-  editor: string;
-  noPage: number;
-  _id: string;
-  imageUrl: string;
-  isbn: string;
-  releaseDate: string;
-  summary: string;
-  title: string;
-}
+interface bookTypes extends BooksInterface { };
 
 const Books = () => {
-  const [books, setBooks] = useState<Array<bookInterface> | undefined>(undefined);
+  const [books, setBooks] = useState<Array<bookTypes> | undefined>(undefined);
   const [isLoading, setIsloading] = useState(false);
 
   useEffect(() => {
