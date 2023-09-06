@@ -2,6 +2,7 @@ import BookCover from "components/molecules/BookCover/BookCover";
 import alyreLogo from "../assets/alyre.png";
 import { BooksInterface } from "components/templates/Book.interface";
 import { Link } from "react-router-dom";
+import OneReview from "components/molecules/OneReview/OneReview";
 
 const Home = () => {
   const imageProposedBook = 'https://static.fnac-static.com/multimedia/Images/FR/NR/41/27/19/1648449/1507-1/tsp20230104070042/Le-Seigneur-des-Anneaux-tome-1-La-Fraternite-de-l-Anneau.jpg';
@@ -108,6 +109,10 @@ const Home = () => {
       </div>
       <div>
         <h2>Popular reviews</h2>
+        <div className="flex">
+          <OneReview />
+          <OneReview />
+        </div>
       </div>
     </div>
   );
