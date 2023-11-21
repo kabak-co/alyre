@@ -65,6 +65,17 @@ const Home = () => {
   ];
   return (
     <div className="w-full">
+      <div>
+
+        {/* style={{ height: 5rem, backgroundImage: `url(${imageUrl})`, backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: 'no-repeat', width: '50%' }} */}
+        <Link to={`/book/0`} className="flex flex-col w-full h-52 bg-cover bg-center" style={{ backgroundImage: `url(${imageProposedBook})` }}>
+          <div className="relative flex flex-col w-full h-full bg-black bg-opacity-50">
+            <h2 className="text-3xl font-bold my-5">The latest Alyre book of the week</h2>
+            <h3 className="text-2xl font-bold my-5">Lord of the Ring</h3>
+            <p className="text-lg">By J.R.R. Tolkien</p>
+          </div>
+        </Link>
+      </div>
       <h1 className="flex items-center justify-center text-3xl font-bold">Welcome to <img className="m-2" src={alyreLogo} alt="logo" /></h1>
       <div>
         <h2>This month popular books</h2>
@@ -99,14 +110,7 @@ const Home = () => {
           ))}
         </div>
       </div>
-      <div>
-        <h2>The latest Alyre book of the week</h2>
-        {/* style={{ height: 5rem, backgroundImage: `url(${imageUrl})`, backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: 'no-repeat', width: '50%' }} */}
-        <Link to={`/book/0`} className="flex justify-center">
-          <img src={imageProposedBook} alt="book cover" className="relative rounded-md" />
-          <h3 className="absolute text-2xl font-bold my-5">Lord of the Ring</h3>
-        </Link>
-      </div>
+
       <div>
         <h2>Popular reviews</h2>
         <div className="flex">
