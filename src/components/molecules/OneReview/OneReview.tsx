@@ -1,9 +1,9 @@
 import heart from '../../../assets/heart.png';
 const OneReview = () => {
     return (
-        <div className="flex m-2 w-1/2 bg-slate-700 rounded-md">
-            <img className="w-1/5 m-4 rounded-md" src="https://static.fnac-static.com/multimedia/Images/FR/NR/41/27/19/1648449/1507-1/tsp20230104070042/Le-Seigneur-des-Anneaux-tome-1-La-Fraternite-de-l-Anneau.jpg" alt="book" />
-            <div>
+        <div className="flex m-2 w-full bg-slate-700 rounded-md">
+            <img className="w-1/4 m-4 rounded-md" src="https://static.fnac-static.com/multimedia/Images/FR/NR/41/27/19/1648449/1507-1/tsp20230104070042/Le-Seigneur-des-Anneaux-tome-1-La-Fraternite-de-l-Anneau.jpg" alt="book" />
+            <div className="flex flex-col justify-around">
                 <p>De Hakuna Matata</p>
                 <div className="w-full flex justify-around">
                     <h4>title</h4>

@@ -68,7 +68,7 @@ const Home = () => {
       <div>
 
         {/* style={{ height: 5rem, backgroundImage: `url(${imageUrl})`, backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: 'no-repeat', width: '50%' }} */}
-        <Link to={`/book/0`} className="flex flex-col w-full h-52 bg-cover bg-center" style={{ backgroundImage: `url(${imageProposedBook})` }}>
+        <Link to={`/book/0`} className="flex flex-col w-full h-72 bg-cover bg-center" style={{ backgroundImage: `url(${imageProposedBook})` }}>
           <div className="relative flex flex-col w-full h-full bg-black bg-opacity-50">
             <h2 className="text-3xl font-bold my-5">The latest Alyre book of the week</h2>
             <h3 className="text-2xl font-bold my-5">Lord of the Ring</h3>
@@ -113,7 +113,14 @@ const Home = () => {
 
       <div>
         <h2>Popular reviews</h2>
-        <div className="flex">
+        <div>
+          <OneReview />
+          <OneReview />
+        </div>
+      </div>
+      <div>
+        <h2>Latest reviews</h2>
+        <div>
           <OneReview />
           <OneReview />
         </div>
